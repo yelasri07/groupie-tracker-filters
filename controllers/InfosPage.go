@@ -15,14 +15,9 @@ func InfosHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	id := r.URL.Query().Get("id")
-	if id == "" {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
-
 	_, err := strconv.Atoi(id)
-	if err != nil {
-		renderError(w, "Artist Not Found", http.StatusNotFound)
+	if id == "" || err != nil {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
 

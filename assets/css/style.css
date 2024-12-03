@@ -29,8 +29,8 @@ body {
   position: absolute;
   top: 2%;
   left: 3%;
-  color: #EAEAEA;
-  background-color: #1F8AC0;
+  color: #eaeaea;
+  background-color: #1f8ac0;
   border-radius: 17px;
   padding: 14px;
   cursor: pointer;
@@ -127,11 +127,11 @@ body {
 }
 
 /* search style */
-.search{
+.search {
   text-align: center;
 }
 
-.search .focus{
+.search .focus {
   padding: 5px;
   position: relative;
   overflow: hidden;
@@ -139,15 +139,15 @@ body {
   border-radius: 25px;
 }
 
-.search form{
+.search form {
   display: flex;
   text-align: center;
   justify-content: center;
   gap: 20px;
 }
 
-.search .focus > div{
-  background-color: #1F8AC0;
+.search .focus > div {
+  background-color: #1f8ac0;
   display: inline-block;
   padding: 25px;
   width: 100%;
@@ -157,10 +157,10 @@ body {
   transform: translateY(-50%);
   z-index: -3;
   border-radius: 25px;
-  transition: .6s;
+  transition: 0.6s;
 }
 
-.search input[type=search]{
+.search input[type="search"] {
   border: none;
   outline: none;
   padding: 10px 20px;
@@ -169,20 +169,20 @@ body {
   font-weight: 600;
 }
 
-.search input[type=search]:focus + div,
-.search input[type=search]:valid + div{
+.search input[type="search"]:focus + div,
+.search input[type="search"]:valid + div {
   left: 0;
 }
 
-.search button{
+.search button {
   border: none;
   outline: none;
   cursor: pointer;
   color: #fff;
-  background-color: #1F8AC0;
+  background-color: #1f8ac0;
   border-radius: 17px;
   font-weight: 600;
-  width: 100px
+  width: 100px;
 }
 
 /* Filter style */
@@ -301,7 +301,7 @@ input[type="text"] {
   width: 100%;
   text-align: center;
 }
-@media screen and (max-width: 998px) {
+@media screen and (max-width: 999px) {
   form {
     flex-direction: column;
     padding: 15px;
@@ -314,6 +314,16 @@ input[type="text"] {
   .right-side,
   .left-side {
     width: 100%;
+  }
+
+  .search form {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search form button {
+    padding: 10px;
   }
 }
 
@@ -342,7 +352,7 @@ input[type="text"] {
   .title p {
     font-size: 16px;
   }
-  .err-msg{
+  .err-msg {
     font-size: 26px;
   }
 }

@@ -24,5 +24,9 @@ func RenderTempalte(w http.ResponseWriter, url string, data any, status int) err
 
 func renderError(w http.ResponseWriter, typeError string, status int) {
 	e := models.ErrorPage{Status: status, Type: typeError}
-	RenderTempalte(w, "views/error.html", e, status)
+	err := RenderTempalte(w, "views/error.html", e, status)
+	if err != nil {
+		http.Error(w, typeError, status)
+		return
+	}
 }

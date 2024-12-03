@@ -31,6 +31,8 @@ func RemoveDuplicates(artists []models.Artists) map[string]string {
 	return duplicates
 }
 
+
+// find min and max value creation date
 func FindMinMax(artists *models.Data) {
 	min := 2024
 	max := 0

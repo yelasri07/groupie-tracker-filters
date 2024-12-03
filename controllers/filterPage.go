@@ -23,6 +23,12 @@ func HandleFilter(w http.ResponseWriter, r *http.Request) {
 
 	MINCD1, MAXCD2, FA1, FA2, NOMB, LOC := GetData(r)
 
+	if len(MINCD1) > 100 || len(MAXCD2) > 100 || len(FA1) > 100 ||
+		len(FA2) > 100 || len(NOMB) > 100 || len(LOC) > 100 {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+
 	filter(&artists, MINCD1, MAXCD2, FA1, FA2, LOC, NOMB)
 
 	artists.Duplicates = utils.RemoveDuplicates(artists.AllArtists)
@@ -47,6 +53,7 @@ func filter(artists *models.Data, MINCD1, MAXCD2, FA1, FA2, LOC string, NOMB []s
 		wg.Add(1)
 		go func(artist models.Artists) {
 			defer wg.Done()
+			
 			hasDate := GetCreattionDate(&artist, MINCD1, MAXCD2)
 			hasFirstAlbum := GetFirstAlbum(&artist, FA1, FA2)
 			hasMembers := NumberOfMembers(&artist, NOMB)
@@ -66,12 +73,12 @@ func filter(artists *models.Data, MINCD1, MAXCD2, FA1, FA2, LOC string, NOMB []s
 }
 
 func GetData(r *http.Request) (string, string, string, string, []string, string) {
-	MCD1 := r.FormValue("minCreationDate")
-	MCD2 := r.FormValue("maxCreationDate")
-	FA1 := r.FormValue("firstAlbum1")
-	FA2 := r.FormValue("firstAlbum2")
+	MCD1 := r.URL.Query().Get("minCreationDate")
+	MCD2 := r.URL.Query().Get("maxCreationDate")
+	FA1 := r.URL.Query().Get("firstAlbum1")
+	FA2 := r.URL.Query().Get("firstAlbum2")
 	NOMB := r.Form["numberOfMembers"]
-	LOC := r.FormValue("locationsOfConcerts")
+	LOC := r.URL.Query().Get("locationsOfConcerts")
 	return MCD1, MCD2, FA1, FA2, NOMB, LOC
 }
 
