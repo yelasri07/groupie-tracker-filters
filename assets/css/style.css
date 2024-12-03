@@ -1,0 +1,400 @@
+@import url("https://fonts.googleapis.com/css2?family=Jacquard+24&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #10151a;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.gradient {
+  width: 100%;
+  background-color: #203647;
+  background-image: linear-gradient(to bottom, #2d3e50, #10151a);
+  height: 40vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 400px 400px;
+  z-index: -999;
+}
+
+.home {
+  position: absolute;
+  top: 2%;
+  left: 3%;
+  color: #EAEAEA;
+  background-color: #1F8AC0;
+  border-radius: 17px;
+  padding: 14px;
+  cursor: pointer;
+  width: 45px;
+  justify-content: center;
+}
+
+.title {
+  color: #eaeaea;
+  text-align: center;
+  margin: 128px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.title h1 {
+  font-family: "Jacquard 24", sans-serif;
+  font-size: 120px;
+  font-weight: 400;
+}
+
+.title p {
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.play {
+  position: absolute;
+  top: 64px;
+  right: 10%;
+  color: #fff;
+  background-color: #1f8ac0;
+  border-radius: 17px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.music2 {
+  position: absolute;
+  color: #527da1;
+  top: 160px;
+  left: 25%;
+  font-size: 20px;
+  transform: rotateY(40deg);
+  opacity: 0.5;
+}
+
+.music1 {
+  position: absolute;
+  color: #527da1;
+  top: 64px;
+  left: 10%;
+  font-size: 40px;
+  transform: rotateY(40deg);
+}
+
+.container {
+  transition: 0.6s;
+  max-width: 1400px;
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 288px));
+  justify-content: center;
+  gap: 20px;
+}
+
+.container > div > a {
+  transition: 0.6s;
+  background-color: #1f2a38;
+  border-radius: 32px;
+  border: solid 0.1px #eaeaea55;
+  height: 336px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.container > div > a:hover {
+  scale: 1.05;
+}
+
+.container > div img {
+  border-radius: 27px;
+  opacity: 0.9;
+}
+
+.container > div h4 {
+  color: #eaeaea;
+  text-decoration: none;
+}
+
+/* search style */
+.search{
+  text-align: center;
+}
+
+.search .focus{
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+  width: 60%;
+  border-radius: 25px;
+}
+
+.search form{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.search .focus > div{
+  background-color: #1F8AC0;
+  display: inline-block;
+  padding: 25px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  transform: translateY(-50%);
+  z-index: -3;
+  border-radius: 25px;
+  transition: .6s;
+}
+
+.search input[type=search]{
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.search input[type=search]:focus + div,
+.search input[type=search]:valid + div{
+  left: 0;
+}
+
+.search button{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  background-color: #1F8AC0;
+  border-radius: 17px;
+  font-weight: 600;
+  width: 100px
+}
+
+/* Filter style */
+.filter-div {
+  margin: 50px auto;
+  max-width: 1400px;
+}
+
+.right-side,
+.left-side {
+  width: 600px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.creation-date h3,
+.FAlbum h3,
+.NMbrs h3,
+.Locations h3 {
+  color: white;
+  margin: 5px 0;
+}
+
+.minV,
+.maxV {
+  background-color: #24282c;
+  padding: 10px;
+  border-radius: 18px;
+  color: white;
+  width: max-content;
+}
+
+.FAlbum input[type="number"] {
+  background-color: #24282c;
+  color: white;
+  width: 75px;
+  height: 35px;
+}
+
+.group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 60px;
+}
+
+.groups {
+  display: flex;
+  gap: 20px;
+}
+
+hr {
+  color: white;
+}
+
+.group label {
+  color: white;
+  font-size: 20px;
+}
+
+input[type="checkbox"] {
+  height: 24px;
+  width: 24px;
+  background-color: #24282c;
+  border-radius: 6px;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: white;
+}
+
+.loc-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+input[type="text"] {
+  padding: 14px;
+  background-color: #24282c;
+  color: white;
+  border-radius: 4px;
+  width: 400px;
+  height: 35px;
+}
+
+.loc-content button {
+  background-color: #0093f5;
+  border: none;
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.range {
+  display: flex;
+  gap: 5px;
+}
+
+.cont-dt {
+  display: flex;
+  gap: 10px;
+}
+.err-msg {
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+@media screen and (max-width: 998px) {
+  form {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .title h1 {
+    font-size: 94px;
+  }
+
+  .right-side,
+  .left-side {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 516px) {
+  .loc-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .loc-content button {
+    width: 100%;
+  }
+
+  input[type="text"] {
+    width: 93vw;
+  }
+
+  .groups {
+    flex-wrap: wrap;
+  }
+
+  .title h1 {
+    font-size: 57px;
+  }
+
+  .title p {
+    font-size: 16px;
+  }
+  .err-msg{
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .cont-dt {
+    flex-direction: column;
+  }
+  .minV,
+  .maxV {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .title h1 {
+    font-size: 52px;
+  }
+
+  .title p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 288px) {
+  .container > div img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .container > div h4 {
+    font-size: 12px;
+  }
+
+  .container > div > a {
+    height: 260px;
+  }
+}
+
+@media screen and (max-width: 200px) {
+  .container > div img {
+    width: 150px;
+    height: 150px;
+    gap: 10px;
+  }
+
+  .container > div h4 {
+    font-size: 7px;
+  }
+
+  .container > div > a {
+    height: 190px;
+    gap: 5px;
+  }
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/img/la-musique.png" type="image/x-icon" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Groupie Tracker</title>
+</head>
+
+<body>
+  <div class="gradient"></div>
+  {{if .HomePage}}
+  <a href="/">
+    <div class="home">
+      <i class="fa-solid fa-house"></i>
+    </div>
+  </a>
+  {{end}}
+  <div class="music1">
+    <i class="fa-solid fa-music"></i>
+  </div>
+  <div class="music2">
+    <i class="fa-solid fa-music"></i>
+  </div>
+  <div class="title">
+    <h1>Groupie Tracker</h1>
+    <p>All bands in one place</p>
+  </div>
+
+
+  <!-- filter and search -->
+  <div class="ftr-sch">
+
+
+    <!-- search -->
+    <div class="search">
+      <form action="/sch" method="GET">
+        <div class="focus">
+          <input
+          list="artists"
+          name="s"
+          type="search"
+          placeholder="Type your search..."
+          required
+        />
+        <div></div>
+        </div>
+        <datalist id="artists">
+          {{range $key, $value := .Duplicates}}
+          <option value="{{$key}}">{{$key}} - {{$value}}</option>
+          {{end}}
+        </datalist>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+
+    <!-- filters -->
+    <div class="filter-div">
+      <form action="/filter" method="get">
+        <div class="left-side">
+          <div class="creation-date">
+            <h3>Creation Date: </h3>
+            <div class="cont-dt">
+              <div  class="range">
+                <p class="minV"> FROM: <span id="minValue">{{.MinDc}}</span></p>
+                <input type="range" name="minCreationDate" id="minCreationDate" min="{{.MinDc}}" max="{{.MaxDc}}"
+                  step="1" />
+              </div>
+              <div class="range">
+                <p class="maxV">TO: <span id="maxValue">{{.MaxDc}}</span></p>
+                <input type="range" name="maxCreationDate" id="maxCreationDate" min="{{.MinDc}}" max="{{.MaxDc}}"
+                  step="1" />
+              </div>
+            </div>
+          </div>
+          <div class="FAlbum">
+            <h3>First Album:</h3>
+            <div>
+              <input type="number" name="firstAlbum1" placeholder="MIN" min="{{.MinDc}}" max="2025">
+              <input type="number" name="firstAlbum2" placeholder="MAX" min="{{.MinDc}}" max="2025">
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="right-side">
+          <div class="NMbrs">
+            <h3>Number of Members: </h3>
+            <div class="groups">
+              <div class="group">
+                <label for="members1">1</label>
+                <input type="checkbox" name="numberOfMembers" id="members1" value="1" />
+              </div>
+              <div class="group">
+                <label for="members2">2</label>
+                <input type="checkbox" name="numberOfMembers" id="members2" value="2" />
+              </div>
+              <div class="group">
+                <label for="members3">3</label>
+                <input type="checkbox" name="numberOfMembers" id="members3" value="3" />
+              </div>
+              <div class="group">
+                <label for="members4">4</label>
+                <input type="checkbox" name="numberOfMembers" id="members4" value="4" />
+              </div>
+              <div class="group">
+                <label for="members5">5</label>
+                <input type="checkbox" name="numberOfMembers" id="members5" value="5" />
+              </div>
+              <div class="group">
+                <label for="members6">6</label>
+                <input type="checkbox" name="numberOfMembers" id="members6" value="6" />
+              </div>
+              <div class="group">
+                <label for="members7">7</label>
+                <input type="checkbox" name="numberOfMembers" id="members7" value="7" />
+              </div>
+              <div class="group">
+                <label for="members8">8</label>
+                <input type="checkbox" name="numberOfMembers" id="members8" value="8" />
+              </div>
+            </div>
+          </div>
+          <div class="Locations">
+            <h3>Locations :</h3>
+            <div class="loc-content">
+              <div>
+                <input type="text" name="locationsOfConcerts" list="d">
+                <datalist id="d">
+                  {{range $key,$value := .Duplicates}}   
+                  {{if eq $value "location"}}           
+                  <option value="{{$key}}">{{$key}} - {{$value}}</option>
+                  {{end}}
+                  {{end}}
+                </datalist>
+              </div>
+              <button type="submit"><i class="fa-solid fa-filter"></i> Filter</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div> 
+
+
+  {{if .CurrentArtists}}
+  <div class="container">
+    {{range .CurrentArtists}}
+    <div>
+      <a href="/infos?id={{.ID}}">
+        <img loading="lazy" width="240" height="240" src="{{.Image}}" />
+        <h4>{{.Name}}</h4>
+      </a>
+    </div>
+    {{end}}
+    {{else}}
+    <h1 class="err-msg">Sorry, we couldn't find any data. Please try again.🥺</h1>
+    {{end}}
+  </div>
+</body>
+
+<script>
+  const minRange = document.getElementById("minCreationDate");
+  const maxRange = document.getElementById("maxCreationDate");
+  const minValueDisplay = document.getElementById("minValue");
+  const maxValueDisplay = document.getElementById("maxValue");
+
+  minRange.addEventListener("input", (event) => {
+    minValueDisplay.textContent = event.target.value;
+  });
+
+  maxRange.addEventListener("input", (event) => {
+    maxValueDisplay.textContent = event.target.value;
+  });
+</script>
+
+</html>

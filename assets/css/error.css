@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.gradient {
+  width: 100%;
+  background-color: #203647;
+  background-image: linear-gradient(to bottom, #2D3E50, #10151A);
+  height: 40vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 400px 400px;
+  z-index: -999;
+}
+body {
+  background-color: #10151A;
+  color: #EAEAEA;
+}
+.container {
+  min-height: 100vh;
+}
+
+.content {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 50px;
+  color: #EAEAEA;
+}
+
+a {
+  color: #1F8AC0;
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 50px;
+  color: #B0C4DE;
+  margin-top: 20px;
+}
+
+.content img {
+  width: 450px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 467px) {
+  h1, h2 {
+    font-size: 25px;
+  }
+  .content img{
+    width: 250px;
+  }
+}
