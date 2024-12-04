@@ -27,6 +27,8 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 	Search(strings.ToLower(searchValue), &artists)
 
+	utils.FindMinMax(&artists)
+
 	artists.Duplicates = utils.RemoveDuplicates(artists.AllArtists)
 	artists.HomePage = true
 

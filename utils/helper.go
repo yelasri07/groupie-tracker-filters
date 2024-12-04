@@ -46,3 +46,20 @@ func FindMinMax(artists *models.Data) {
 	artists.MaxDc = max
 	artists.MinDc = min
 }
+
+// replace "-" to ", "
+func Replace(location string) string {
+	if len(location) == 0  {
+		return ""
+	}
+
+	var str string
+	for _, char := range location {
+		if char == '-' {
+			str += ", "
+			continue
+		}
+		str += string(char)
+	}
+	return str
+}
