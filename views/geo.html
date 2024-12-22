@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/la-musique.png" type="image/x-icon">
+   <link rel="shortcut icon" href="assets/img/la-musique.png" type="image/x-icon">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+   integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Groupie Tracker</title>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        .home {
+            position: absolute;
+            top: 2%;
+            left: 3%;
+            color: #eaeaea;
+            background-color: #1f8ac0;
+            border-radius: 17px;
+            padding: 14px;
+            cursor: pointer;
+            justify-content: center;
+        }
+    </style>
 </head>
+
 <body>
-    
-    <h1>Hello {{.Country}}</h1>
-    <iframe width="100%" height="500" 
-    src="https://www.openstreetmap.org/export/embed.html?bbox={{.Bbox.Lon1}},{{.Bbox.Lat1}},{{.Bbox.Lon2}},{{.Bbox.Lat2}}&layer=mapnik&marker={{.Lat}},{{.Lon}}" frameborder="0"></iframe>
+
+    <div class="gradient"></div>
+    <a href="/">
+        <div class="home">
+            <i class="fa-solid fa-house"></i>
+        </div>
+    </a>
+    <h1 style="text-align: center;">Hello {{.Country}}</h1>
+    <iframe width="100%" height="500"
+        src="https://www.openstreetmap.org/export/embed.html?bbox={{.Bbox.Lon1}},{{.Bbox.Lat1}},{{.Bbox.Lon2}},{{.Bbox.Lat2}}&layer=mapnik&marker={{.Lat}},{{.Lon}}"
+        frameborder="0"
+        style="border-radius: 20px;">
+    </iframe>
 
 </body>
+
 </html>
