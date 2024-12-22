@@ -14,7 +14,7 @@ func GeolocalizationHandler(w http.ResponseWriter, r *http.Request) {
 
 	location := r.URL.Query().Get("location")
 
-	if location == "" || !IsValidLocation(location) {
+	if !IsValidLocation(location) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
@@ -28,11 +28,6 @@ func GeolocalizationHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if len(Geo.Results) == 0 {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
-
 	err = RenderTempalte(w, "views/geo.html", Geo.Results[0], http.StatusOK)
 	if err != nil {
 		renderError(w, "Server error", http.StatusInternalServerError)
@@ -41,6 +36,9 @@ func GeolocalizationHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func IsValidLocation(str string) bool {
+	if str == "" {
+		return false
+	}
 	var locations models.IndexLocations
 	models.FetchAPI("https://groupietrackers.herokuapp.com/api/locations", &locations)
 
