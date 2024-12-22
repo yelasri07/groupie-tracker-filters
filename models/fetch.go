@@ -12,7 +12,7 @@ func FetchAPI(url string, s any) error {
 	}
 	defer resp.Body.Close()
 
-	if err := json.NewDecoder(resp.Body).Decode(&s); err != nil {
+	if err := json.NewDecoder(resp.Body).Decode(s); err != nil {
 		return err
 	}
 

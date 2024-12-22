@@ -46,7 +46,10 @@
         <h3>Locations :</h3>
         <ul>
           {{range .Loca.Locations}}
-          <li><i class="fa-solid fa-map-pin"></i> {{.}}</li>
+          <li>
+            <i class="fa-solid fa-map-pin"></i>
+            <a href="/geo?location={{.}}"> {{.}}</a>
+          </li>
           {{end}}
         </ul>
       </div>

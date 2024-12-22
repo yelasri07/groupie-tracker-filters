@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
+	"groupietracker/controllers"
 	"log"
 	"net/http"
 	"os"
-
-	routers "groupietracker/routes"
 )
 
 const port string = ":8082"
@@ -17,7 +16,13 @@ func main() {
 		return
 	}
 
-	routers.Routers()
+	http.HandleFunc("/assets/", controllers.AssetsHandler)
+	http.HandleFunc("/", controllers.IndexHandler)
+	http.HandleFunc("/infos", controllers.InfosHandler)
+	http.HandleFunc("/sch", controllers.SearchHandler)
+	http.HandleFunc("/filter", controllers.HandleFilter)
+	http.HandleFunc("/geo", controllers.GeolocalizationHandler)
+
 	fmt.Println("http://localhost" + port + "/")
 	log.Fatal(http.ListenAndServe(port, nil))
 }

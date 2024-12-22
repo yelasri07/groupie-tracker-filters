@@ -1,5 +1,19 @@
 package models
 
+type Geo struct {
+	Results []struct {
+		Country string `json:"country"`
+		Lon float64 `json:"lon"`
+		Lat float64 `json:"lat"`
+		Bbox struct {
+			Lon1 float64 `json:"lon1"`
+			Lat1 float64 `json:"lat1"`
+			Lon2 float64 `json:"lon2"`
+			Lat2 float64 `json:"lat2"`
+		} `json:"bbox"`
+	} `json:"results"`
+}
+
 type Data struct {
 	AllArtists     []Artists
 	CurrentArtists []Artists
